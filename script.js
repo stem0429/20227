@@ -183,6 +183,11 @@ const buyBtn = document.getElementById('buyBtn');
 // 구매하기 기능
 if (buyBtn) {
     buyBtn.addEventListener('click', () => {
+        const loginUser = localStorage.getItem('loginUser');
+        if (!loginUser) {
+            alert('로그인 후 이용 가능합니다.');
+            return;
+        }
         if (cartItems.length === 0) {
             alert('장바구니가 비어 있습니다.');
             return;
@@ -193,18 +198,15 @@ if (buyBtn) {
         });
         alert(msg);
         // 구매내역 localStorage 저장
-        const loginUser = localStorage.getItem('loginUser');
-        if (loginUser) {
-            let history = [];
-            try {
-                history = JSON.parse(localStorage.getItem('purchase_' + loginUser) || '[]');
-            } catch(e) { history = []; }
-            history.push({
-                date: new Date().toLocaleString(),
-                items: cartItems.map(item => ({ name: item.name, count: item.count }))
-            });
-            localStorage.setItem('purchase_' + loginUser, JSON.stringify(history));
-        }
+        let history = [];
+        try {
+            history = JSON.parse(localStorage.getItem('purchase_' + loginUser) || '[]');
+        } catch(e) { history = []; }
+        history.push({
+            date: new Date().toLocaleString(),
+            items: cartItems.map(item => ({ name: item.name, count: item.count }))
+        });
+        localStorage.setItem('purchase_' + loginUser, JSON.stringify(history));
         cartItems = [];
         cartCount = 0;
         updateCartBtn();
@@ -324,3 +326,4 @@ window.addEventListener('click', (e) => {
 });
 
 updateCartBtn();
+
