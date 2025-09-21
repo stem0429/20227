@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NDYJ</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div style="display:flex; align-items:center; gap:16px;">
+            <img src="images/donghyunlogo.png" alt="로고" style="height:auto; width:auto; max-width:80px; max-height:80px; object-fit:cover; border-radius:18px; background:#f0f0f0; margin-right:16px; vertical-align:middle;">
+            <h1 style="margin:0;">동현 쇼핑몰</h1>
+        </div>
+        <div style="display:flex; align-items:center; gap:16px;">
+            <button id="loginBtn" style="background:#2980d9; color:#fff; border:none; border-radius:18px; padding:10px 20px; font-size:1rem; font-weight:600; cursor:pointer;">로그인</button>
+            <button id="signupBtn" style="background:#27ae60; color:#fff; border:none; border-radius:18px; padding:10px 20px; font-size:1rem; font-weight:600; cursor:pointer;">회원가입</button>
+            <span id="userInfo" style="display:none; align-items:center; gap:10px;">
+                <span id="userIdLabel" style="font-weight:600; color:#222;"></span>
+                <button id="mypageBtn" style="background:#f1c40f; color:#222; border:none; border-radius:18px; padding:8px 16px; font-size:1rem; font-weight:500; cursor:pointer;">마이페이지</button>
+                <button id="logoutBtn" style="background:#e74c3c; color:#fff; border:none; border-radius:18px; padding:8px 16px; font-size:1rem; font-weight:500; cursor:pointer;">로그아웃</button>
+            </span>
+            <button id="cartBtn">🛒 장바구니</button>
+        </div>
+    </header>
+    <div style="max-width:1200px; margin:24px auto 0 auto; padding:0 20px;">
+        <input type="text" id="searchInput" placeholder="상품명 검색" style="width:100%; max-width:400px; padding:10px 16px; font-size:1rem; border-radius:8px; border:1px solid #ccc;">
+    </div>
+    <main>
+        <section id="products">
+            <h2>상품 목록</h2>
+            <div class="product-list">
+                <div class="container" style="display:flex; max-width:1200px; margin:24px auto 0 auto; gap:32px; align-items:flex-start;">
+                    <aside class="sidebar" style="width:180px; background:#fff; border-radius:14px; box-shadow:0 2px 8px rgba(0,0,0,0.04); padding:24px 18px; min-height:400px;">
+                        <h3 style="margin-top:0; font-size:1.1rem; margin-bottom:18px;">카테고리</h3>
+                        <ul id="categoryList" style="list-style:none; padding:0; margin:0;">
+                            <li><button class="category-btn" data-category="all" style="background:none; border:none; color:#222; font-size:1rem; cursor:pointer; margin-bottom:10px;">전체</button></li>
+                            <li><button class="category-btn" data-category="역겨움" style="background:none; border:none; color:#222; font-size:1rem; cursor:pointer; margin-bottom:10px;">역겨움</button></li>
+                            <li><button class="category-btn" data-category="못생김" style="background:none; border:none; color:#222; font-size:1rem; cursor:pointer; margin-bottom:10px;">못생김</button></li>
+                            <li><button class="category-btn" data-category="신기함" style="background:none; border:none; color:#222; font-size:1rem; cursor:pointer; margin-bottom:10px;">신기함</button></li>
+                            <li><button class="category-btn" data-category="귀여움" style="background:none; border:none; color:#222; font-size:1rem; cursor:pointer; margin-bottom:10px;">귀여움</button></li>
+                            <li><button class="category-btn" data-category="잘생김" style="background:none; border:none; color:#222; font-size:1rem; cursor:pointer; margin-bottom:10px;">잘생김</button></li>
+                            <li><button class="category-btn" data-category="?" style="background:none; border:none; color:#222; font-size:1rem; cursor:pointer; margin-bottom:10px;">?</button></li>
+                        </ul>
+                    </aside>
+                    <div style="flex:1;">
+                        <div class="product-list">
+                            <div class="product" data-category="역겨움,못생김,신기함,귀여움,?">
+                                <img src="images/donghyun1.jpg" alt="동현1" />
+                                <h3>뽀뽀 동현</h3>
+                                <p>₩1,000</p>
+                                <button class="add-to-cart">장바구니 담기</button>
+                            </div>
+                            <div class="product" data-category="역겨움,못생김,신기함,귀여움,?">
+                                <img src="images/donghyun2.jpg" alt="동현2" />
+                                <h3>빡 동현</h3>
+                                <p>₩1,000</p>
+                                <button class="add-to-cart">장바구니 담기</button>
+                            </div>
+                            <div class="product" data-category="역겨움,못생김,신기함,귀여움,?">
+                                <img src="images/donghyun3.jpg" alt="동현3" />
+                                <h3>콘 동</h3>
+                                <p>₩1,000</p>
+                                <button class="add-to-cart">장바구니 담기</button>
+                            </div>
+                                    <div class="product" data-category="역겨움,못생김,신기함,귀여움,?">
+                                        <img src="images/donghyun4.jpg" alt="동현4" />
+                                        <h3>호잇 동현</h3>
+                                        <p>₩1,000</p>
+                                        <button class="add-to-cart">장바구니 담기</button>
+                                    </div>
+                                    <div class="product" data-category="역겨움,못생김,신기함,귀여움,?">
+                                        <img src="images/donghyun5.jpg" alt="동현5" />
+                                        <h3>? 동현</h3>
+                                        <p>₩1,000</p>
+                                        <button class="add-to-cart">장바구니 담기</button>
+                                    </div>
+                                    <div class="product" data-category="역겨움,못생김,신기함,귀여움,?">
+                                        <img src="images/donghyun6.jpg" alt="동현6" />
+                                        <h3>신 동</h3>
+                                        <p>₩1,000</p>
+                                        <button class="add-to-cart">장바구니 담기</button>
+                                    </div>
+                                    <div class="product" data-category="역겨움,못생김,신기함,귀여움,?">
+                                        <img src="images/donghyun7.jpg" alt="동현7" />
+                                        <h3>초 동</h3>
+                                        <p>₩1,000</p>
+                                        <button class="add-to-cart">장바구니 담기</button>
+                                    </div>
+                                    <div class="product" data-category="역겨움,못생김,신기함,귀여움,?">
+                                        <img src="images/donghyun8.jpg" alt="동현8" />
+                                        <h3>그 시절 동현</h3>
+                                        <p>₩1,000</p>
+                                        <button class="add-to-cart">장바구니 담기</button>
+                                    </div>
+                                    <!-- 더 많은 상품 추가 가능 -->
+                                </div>
+                            </section>
+                        </main>
+                    </div>
+                </div>
+    </main>
+    <footer>
+        <p>&copy; 2025 동현 쇼핑몰</p>
+    </footer>
+
+    <!-- 장바구니 모달 -->
+    <div id="cartModal" class="modal" style="display:none;">
+        <div class="modal-content">
+            <span class="close" id="closeCartModal">&times;</span>
+            <h2>장바구니 목록</h2>
+            <ul id="cartList"></ul>
+            <button id="buyBtn" style="margin-top:18px; width:100%; background:#27ae60; color:#fff; border:none; border-radius:8px; padding:10px 0; font-size:1rem; font-weight:600; cursor:pointer;">구매하기</button>
+            <button id="clearCartBtn" style="margin-top:10px; width:100%; background:#e74c3c; color:#fff; border:none; border-radius:8px; padding:10px 0; font-size:1rem; font-weight:600; cursor:pointer;">장바구니 비우기</button>
+        </div>
+    </div>
+
+    <!-- script.js는 body 맨 마지막에만 한 번만 불러옵니다. -->
+    <!-- 로그인 모달: 안내 메시지만 표시 -->
+    <div id="loginModal" class="modal" style="display:none;">
+        <div class="modal-content">
+            <span class="close" id="closeLoginModal">&times;</span>
+            <h2 style="margin-top:0;">로그인</h2>
+            <form id="loginForm" style="display:flex; flex-direction:column; gap:16px; margin-top:18px;">
+                <input type="text" id="loginId" placeholder="아이디" required style="padding:10px; font-size:1rem; border-radius:8px; border:1px solid #ccc;">
+                <input type="password" id="loginPw" placeholder="비밀번호" required style="padding:10px; font-size:1rem; border-radius:8px; border:1px solid #ccc;">
+                <button type="submit" style="background:#2980d9; color:#fff; border:none; border-radius:8px; padding:10px 0; font-size:1rem; font-weight:600; cursor:pointer;">로그인</button>
+            </form>
+        </div>
+    </div>
+    <!-- 회원가입 모달: 기존 폼 유지 -->
+    <div id="signupModal" class="modal" style="display:none;">
+        <div class="modal-content">
+            <span class="close" id="closeSignupModal">&times;</span>
+            <h2 style="margin-top:0;">회원가입</h2>
+            <form id="signupForm" style="display:flex; flex-direction:column; gap:16px; margin-top:18px;">
+                <input type="text" id="signupId" placeholder="아이디" required style="padding:10px; font-size:1rem; border-radius:8px; border:1px solid #ccc;">
+                <input type="password" id="signupPw" placeholder="비밀번호" required style="padding:10px; font-size:1rem; border-radius:8px; border:1px solid #ccc;">
+                <button type="submit" style="background:#27ae60; color:#fff; border:none; border-radius:8px; padding:10px 0; font-size:1rem; font-weight:600; cursor:pointer;">회원가입</button>
+            </form>
+        </div>
+    </div>
+    <script src="script.js"></script>
+    <!-- 마이페이지 모달 -->
+    <div id="mypageModal" class="modal" style="display:none;">
+        <div class="modal-content">
+            <span class="close" id="closeMypageModal">&times;</span>
+            <h2 style="margin-top:0;">마이페이지</h2>
+            <div id="mypageContent" style="margin-top:18px;">
+                <p>환영합니다, <span id="mypageUserId"></span>님!</p>
+                <p>이곳에 원하는 마이페이지 정보를 추가할 수 있습니다.</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
