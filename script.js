@@ -124,7 +124,6 @@ if (categoryBtns.length > 0) {
             let visibleCount = 0;
             document.querySelectorAll('.product').forEach(product => {
                 const prodCat = product.getAttribute('data-category') || '';
-                // 쉼표로 구분된 카테고리 배열로 변환
                 const prodCatArr = prodCat.split(',').map(s => s.trim());
                 if (selected === 'all' || prodCatArr.includes(selected)) {
                     product.style.display = '';
@@ -304,4 +303,5 @@ window.addEventListener('click', (e) => {
 });
 
 updateCartBtn();
+
 
