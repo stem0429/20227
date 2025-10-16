@@ -1,5 +1,3 @@
-// 로그인/회원가입 모달 기능
-// 로그인 상태 관리 및 UI 갱신
 function updateAuthUI() {
     const loginBtn = document.getElementById('loginBtn');
     const signupBtn = document.getElementById('signupBtn');
@@ -13,7 +11,6 @@ function updateAuthUI() {
         if (userInfo) {
             userInfo.style.display = 'flex';
             userIdLabel.textContent = loginUser + '님';
-            // 마이페이지 버튼 이벤트 연결
             const mypageBtn = document.getElementById('mypageBtn');
             if (mypageBtn) {
                 mypageBtn.onclick = function() {
@@ -32,7 +29,6 @@ function updateAuthUI() {
             updateAuthUI();
         };
     }
-    // 마이페이지 모달 닫기
     const closeMypageModal = document.getElementById('closeMypageModal');
     const mypageModal = document.getElementById('mypageModal');
     if (closeMypageModal && mypageModal) {
@@ -54,7 +50,6 @@ const closeSignupModal = document.getElementById('closeSignupModal');
 const loginForm = document.getElementById('loginForm');
 const signupForm = document.getElementById('signupForm');
 
-// 모달 열기/닫기
 if (loginBtn && loginModal) {
     loginBtn.addEventListener('click', () => {
         console.log('로그인 버튼 클릭됨');
@@ -83,7 +78,6 @@ window.addEventListener('click', (e) => {
     if (e.target === signupModal) signupModal.style.display = 'none';
 });
 
-// 회원가입/로그인 시뮬레이션 (localStorage)
 if (signupForm) {
     signupForm.addEventListener('submit', (e) => {
         e.preventDefault();
@@ -120,8 +114,7 @@ if (loginForm) {
         updateAuthUI();
     });
 }
-// 카테고리 필터링 기능 (여러 카테고리 지원)
-// 페이지 로드시 로그인 상태 UI 갱신
+
 updateAuthUI();
 const categoryBtns = document.querySelectorAll('.category-btn');
 if (categoryBtns.length > 0) {
@@ -140,7 +133,6 @@ if (categoryBtns.length > 0) {
                     product.style.display = 'none';
                 }
             });
-            // 상품 없음 메시지 처리
             let noProductMsg = document.getElementById('noProductMsg');
             if (!noProductMsg) {
                 const productList = document.querySelector('.product-list');
@@ -158,13 +150,11 @@ if (categoryBtns.length > 0) {
             } else {
                 noProductMsg.style.display = 'none';
             }
-            // 검색창 초기화
             const searchInput = document.getElementById('searchInput');
             if (searchInput) searchInput.value = '';
         });
     });
 }
-// 상품 검색 기능
 const searchInput = document.getElementById('searchInput');
 if (searchInput) {
     searchInput.addEventListener('input', (e) => {
@@ -180,7 +170,6 @@ if (searchInput) {
     });
 }
 const buyBtn = document.getElementById('buyBtn');
-// 구매하기 기능
 if (buyBtn) {
     buyBtn.addEventListener('click', () => {
         const loginUser = localStorage.getItem('loginUser');
@@ -197,7 +186,6 @@ if (buyBtn) {
             msg += `- ${item.name} x ${item.count}\n`;
         });
         alert(msg);
-        // 구매내역 localStorage 저장
         let history = [];
         try {
             history = JSON.parse(localStorage.getItem('purchase_' + loginUser) || '[]');
@@ -214,7 +202,6 @@ if (buyBtn) {
     });
 }
 const clearCartBtn = document.getElementById('clearCartBtn');
-// 장바구니 비우기 기능
 if (clearCartBtn) {
     clearCartBtn.addEventListener('click', () => {
         cartItems = [];
@@ -223,9 +210,6 @@ if (clearCartBtn) {
         openCartModal();
     });
 }
-
-// 장바구니 기능
-
 
 
 let cartCount = 0;
@@ -236,11 +220,9 @@ const cartModal = document.getElementById('cartModal');
 const closeCartModal = document.getElementById('closeCartModal');
 const cartList = document.getElementById('cartList');
 
-// 상품을 객체로 관리: {name, img, count}
 function addToCart(product) {
     const name = product.querySelector('h3').textContent;
     const img = product.querySelector('img').getAttribute('src');
-    // 이미 담긴 상품인지 확인
     const found = cartItems.find(item => item.name === name);
     if (found) {
         found.count++;
@@ -267,7 +249,6 @@ function openCartModal() {
             li.style.display = 'flex';
             li.style.alignItems = 'center';
             li.style.gap = '12px';
-            // 이미지
             const img = document.createElement('img');
             img.src = item.img;
             img.alt = item.name;
@@ -275,10 +256,8 @@ function openCartModal() {
             img.style.height = '48px';
             img.style.objectFit = 'cover';
             img.style.borderRadius = '8px';
-            // 이름과 개수
             const info = document.createElement('span');
             info.textContent = `${item.name} x ${item.count}`;
-            // 삭제 버튼
             const removeBtn = document.createElement('button');
             removeBtn.textContent = '제거';
             removeBtn.style.marginLeft = 'auto';
@@ -318,7 +297,6 @@ addToCartButtons.forEach((btn) => {
 cartBtn.addEventListener('click', openCartModal);
 closeCartModal.addEventListener('click', closeCart);
 
-// 모달 바깥 클릭 시 닫기
 window.addEventListener('click', (e) => {
     if (e.target === cartModal) {
         closeCart();
@@ -326,3 +304,4 @@ window.addEventListener('click', (e) => {
 });
 
 updateCartBtn();
+
