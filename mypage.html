@@ -21,7 +21,6 @@
     <ul id="purchaseHistory" style="margin-top:18px; font-size:1.05rem; color:#333; display:flex; flex-direction:column; gap:18px; padding:0;"></ul>
     </main>
     <script>
-        // 로그인한 사용자 정보 표시
         const userId = localStorage.getItem('loginUser');
         const infoDiv = document.getElementById('mypageInfo');
         if(userId) {
@@ -30,7 +29,6 @@
             infoDiv.textContent = '로그인이 필요합니다.';
         }
 
-        // 구매내역 표시
         const purchaseList = document.getElementById('purchaseHistory');
         let history = [];
         if(userId) {
@@ -46,14 +44,12 @@
                 li.style.alignItems = 'flex-start';
                 li.style.gap = '8px';
                 li.style.listStyle = 'none';
-                // 날짜/시간 표시
                 const dateSpan = document.createElement('span');
                 dateSpan.textContent = item.date;
                 dateSpan.style.fontSize = '0.98rem';
                 dateSpan.style.color = '#888';
                 dateSpan.style.marginBottom = '4px';
                 li.appendChild(dateSpan);
-                // 이미지 목록
                 const imgRow = document.createElement('div');
                 imgRow.style.display = 'flex';
                 imgRow.style.flexWrap = 'wrap';
@@ -105,3 +101,4 @@
     </script>
 </body>
 </html>
+
