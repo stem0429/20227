@@ -304,4 +304,15 @@ window.addEventListener('click', (e) => {
 
 updateCartBtn();
 
+window.addEventListener("load", () => {
+  const loading = document.getElementById("loadingScreen");
+  if (loading) {
+    setTimeout(() => {
+      loading.style.opacity = "0";
+      loading.style.transition = "opacity 0.6s ease";
+      setTimeout(() => loading.remove(), 600);
+    }, 1500); // 로딩바 끝난 뒤 약간 대기
+  }
+});
+
 
